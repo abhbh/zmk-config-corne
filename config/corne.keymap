@@ -2,14 +2,32 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+
+// Layer defines
+#define BASE 0
+#define EXT 1
+#define SYM 2
+#define ADJ 3
+#define NUM 4
+#define WMNP 5
+#define LGCY 6
+#define KBFW 7
+
+// Keycode defines
+#define MEH LC(LA(LSHFT))
+#define HYPR LC(LA(LG(LSHFT)))
+
+
 / {
 
     behaviors {
-        shift_cw: shift_capsword {
+        
+        // Tap for sticky shift, Hold for shift, double-tap for caps word
+        shft_cw: shift_capsword {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&sk RSHIFT>, <&caps_word>; 
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            bindings = <&sk RSHFT>, <&caps_word>; 
+            mods = <(MOD_RSFT)>;
         };
     };
 
@@ -17,69 +35,83 @@
         compatible = "zmk,keymap";
 
         base_layer {
+            display-name = "Base layer";
             bindings = <
-&none  &kp Q  &kp W  &kp F      &kp P  &kp B        &kp J      &kp L  &kp U      &kp Y    &kp SQT   &none
-&none  &kp A  &kp R  &kp S      &kp T  &kp G        &kp M      &kp N  &kp E      &kp I    &kp O     &none
-&none  &kp Z  &kp X  &kp C      &kp D  &kp V        &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH  &none
-                     &sk LCTRL  &sl 1  &kp SPACE    &shift_cw  &sl 2  &sl 4
+&none  &kp Q  &kp W  &kp F      &kp P    &kp B        &kp J     &kp L    &kp U      &kp Y    &kp SQT   &none
+&none  &kp A  &kp R  &kp S      &kp T    &kp G        &kp M     &kp N    &kp E      &kp I    &kp O     &none
+&none  &kp Z  &kp X  &kp C      &kp D    &kp V        &kp K     &kp H    &kp COMMA  &kp DOT  &kp FSLH  &none
+                     &sk LCTRL  &sl EXT  &kp SPACE    &shft_cw  &sl SYM  &sl WMNP
             >;
-
-            label = "Base Layer";
         };
 
-        navnum {
+        extend {
+            display-name = "Extend layer";
             bindings = <
-&trans  &kp TAB  &kp LC(LEFT)  &kp UP    &kp LC(RIGHT)  &kp PG_UP    &kp DEL    &sk LC(LSHFT)  &kp ENTER  &kp LC(BSPC)  &kp BSPC  &trans
-&trans  &kp ESC  &kp LEFT      &kp DOWN  &kp RIGHT      &kp PG_DN    &kp LGUI   &sk LSHFT      &sk LCTRL  &sk LALT      &sk LGUI  &trans
-&trans  &kp N4   &kp N2        &kp N1    &kp N3         &kp N5       &kp N6     &kp N8         &kp N0     &kp N9        &kp N7    &trans
-                               &sl 5     &trans         &trans       &sl 4      &sl 3          &key_repeat
+&trans  &kp HOME  &kp LC(LEFT)     &kp UP    &kp LC(RIGHT)  &kp PG_UP      &kp DEL      &kp BSPC       &kp LC(BSPC)  &sk MEH    &kp CAPS   &trans
+&trans  &kp END   &kp LEFT         &kp DOWN  &kp RIGHT      &kp PG_DN      &kp LGUI     &sk LSHFT      &sk LCTRL     &sk LALT   &sk LGUI   &trans
+&trans  &kp ESC   &kp LC(LS(TAB))  &kp TAB   &kp LC(TAB)    &key_repeat    &key_repeat  &sk LC(LSHFT)  &kp ENTER     &kp K_APP  &kp PSCRN  &trans
+                                   &sl KBFW  &trans         &kp BSPC       &sl NUM      &sl ADJ        &none
             >;
-
-            label = "Nav, Num";
         };
 
         symbols {
+            display-name = "Symbols layer";
             bindings = <
-&trans  &kp TILDE  &kp COLON  &kp SQT   &kp LT    &kp PRCNT    &kp ASTRK  &kp GT    &kp SEMI  &kp EQUAL  &kp BSPC   &trans
-&trans  &kp GRAVE  &kp UNDER  &kp LPAR  &kp LBRC  &kp EXCL     &kp AMPS   &kp RBRC  &kp RPAR  &kp MINUS  &kp QMARK  &trans
-&trans  &kp BSLH   &kp AT     &kp HASH  &kp LBKT  &kp DLLR     &kp CARET  &kp RBKT  &kp PIPE  &kp PLUS   &kp ENTER  &trans
-                              &trans    &sl 3     &trans       &kp ENTER  &trans    &tog 4
+&trans  &kp LT    &kp TILDE  &kp EQUAL &kp GT    &kp PRCNT    &kp ASTRK  &kp AMPS   &kp HASH   &kp UNDER  &kp GRAVE  &trans
+&trans  &kp EXCL  &kp MINUS  &kp LPAR  &kp LBRC  &kp LBKT     &kp AT     &sk LSHFT  &sk LCTRL  &sk LALT   &sk LGUI   &trans
+&trans  &kp DLLR  &kp PLUS   &kp RPAR  &kp RBRC  &kp RBKT     &kp CARET  &kp PIPE   &kp SEMI   &kp COLON  &kp BSLH   &trans
+                             &trans    &sl ADJ   &kp ENTER    &kp ENTER  &trans     &tog WMNP
             >;
-
-            label = "Symbols";
         };
 
-        adjust {
+        adjustfn {
+            display-name = "Adjust+Fn layer";
             bindings = <
-&trans  &none     &kp C_MUTE  &kp C_VOL_DN      &kp C_VOL_UP  &sk LC(LA(LG(LSHFT)))    &kp PAUSE_BREAK  &kp F7  &kp F8  &kp F9  &kp F10  &trans
-&trans  &sk LGUI  &sk LALT    &sk LCTRL         &sk LSHFT     &sk LC(LA(LSHFT))        &kp PRINTSCREEN  &kp F4  &kp F5  &kp F6  &kp F11  &trans
-&trans  &kp SLCK  &kp C_PREV  &kp C_PLAY_PAUSE  &kp C_NEXT    &kp CAPSLOCK             &kp INSERT       &kp F1  &kp F2  &kp F3  &kp F12  &trans
-                              &none             &trans        &none                    &none            &trans  &none
+&trans  &none       &kp C_MUTE  &kp C_VOL_DN      &kp C_VOL_UP  &sk HYPR    &kp F12  &kp F7   &kp F8   &kp F9  &kp INSERT       &trans
+&trans  &sk LGUI    &sk LALT    &sk LCTRL         &sk LSHFT     &sk MEH     &kp F11  &kp F4   &kp F5   &kp F6  &kp PAUSE_BREAK  &trans
+&trans  &kp C_STOP  &kp C_PREV  &kp C_PLAY_PAUSE  &kp C_NEXT    &tog LGCY   &kp F10  &kp F1   &kp F2   &kp F3  &kp SCROLLLOCK   &trans
+                                &none             &trans        &none       &none    &trans   &none
             >;
-
-            label = "Adjust, Fn";
         };
 
-        numpad {
+        numbers {
+            display-name = "Numbers layer";
             bindings = <
-&trans  &kp TAB    &kp LC(LG(N2))    &kp LC(LG(N3))  &kp LC(LG(N4))     &kp LC(LG(N5))    &kp KP_MULTIPLY  &kp KP_N7   &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &trans
-&trans  &kp ESC    &kp LC(LG(N6))    &kp LC(LG(N7))  &kp LC(LG(N8))     &kp LC(LG(N9))    &kp KP_N0        &kp KP_N4   &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &trans
-&trans  &kp K_APP  &kp LG(LS(LEFT))  &kp LG(LS(S))   &kp LG(LS(RIGHT))  &kp LC(LG(N0))    &kp KP_DIVIDE    &kp KP_N1   &kp KP_N2  &kp KP_N3  &kp KP_DOT    &trans
-                                     &kp BSPC        &tog 4             &kp SPACE         &kp ENTER        &kp KP_NUM  &tog 4
+&trans  &kp N1    &kp N2    &kp N3     &kp N4     &kp N5         &kp N6       &kp N7  &kp N8  &kp N9  &kp N0     &trans
+&trans  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &kp RALT       &kp N0       &kp N4  &kp N5  &kp N6  &kp COMMA  &trans
+&trans  &kp ESC   &kp DEL   &kp TAB    &kp ENTER  &key_repeat    &key_repeat  &kp N1  &kp N2  &kp N3  &kp DOT    &trans
+                            &kp BSPC   &trans     &kp SPACE      &trans       &kp N0  &none
             >;
-
-            label = "Numpad, WM";
         };
 
-        kbfunc {
+        wmnumpad {
+            display-name = "WM+Numpad";
+            bindings = <
+&trans  &kp LA(TAB)  &kp LC(LG(N2))    &kp LC(LG(N3))  &kp LC(LG(N4))     &kp LC(LG(N5))    &kp KP_MULTIPLY  &kp KP_N7   &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &trans
+&trans  &kp LA(ESC)  &kp LC(LG(N6))    &kp LC(LG(N7))  &kp LC(LG(N8))     &kp LC(LG(N9))    &kp KP_N0        &kp KP_N4   &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &trans
+&trans  &kp ESC      &kp LG(LS(LEFT))  &kp TAB         &kp LG(LS(RIGHT))  &kp LC(LG(N0))    &kp KP_DIVIDE    &kp KP_N1   &kp KP_N2  &kp KP_N3  &kp KP_DOT    &trans
+                                       &kp BSPC        &tog WMNP          &kp SPACE         &kp KP_ENTER     &kp KP_NUM  &tog WMNP
+            >;
+        };
+
+        legacy {
+            display-name = "Legacy layout";
+            bindings = <
+&trans  &kp TAB    &kp Q  &kp W      &kp E     &kp R        &none        &none      &none      &none  &kp CAPS   &trans
+&trans  &kp LSHFT  &kp A  &kp S      &kp D     &kp F        &none        &none      &none      &none  &none      &trans
+&trans  &kp LCTRL  &kp Z  &kp X      &kp C     &kp V        &key_repeat  &none      &kp ENTER  &none  &kp PSCRN  &trans
+                          &kp LCTRL  &kp LALT  &kp SPACE    &tog LGCY    &tog LGCY  &tog LGCY
+            >;
+        };
+
+        kbfw {
+            display-name = "Firmware keys";
             bindings = <
 &trans  &bootloader     &sys_reset     &none          &none          &none           &none  &none  &none  &sys_reset  &bootloader  &trans
 &trans  &bt BT_CLR      &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3    &none  &none  &none  &none       &none        &trans
 &trans  &bt BT_CLR_ALL  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_SEL 4    &none  &none  &none  &none       &none        &trans
                                        &trans         &trans         &none           &none  &none  &none
             >;
-
-            label = "Keyboard Fn";
         };
     };
 };
