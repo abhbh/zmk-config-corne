@@ -22,7 +22,7 @@
 &trans  &kp TAB  &kp LC(LEFT)  &kp UP    &kp LC(RIGHT)  &kp PG_UP    &kp DEL    &sk LC(LSHFT)  &kp ENTER  &kp LC(BSPC)  &kp BSPC  &trans
 &trans  &kp ESC  &kp LEFT      &kp DOWN  &kp RIGHT      &kp PG_DN    &kp LGUI   &sk LSHFT      &sk LCTRL  &sk LALT      &sk LGUI  &trans
 &trans  &kp N4   &kp N2        &kp N1    &kp N3         &kp N5       &kp N6     &kp N8         &kp N0     &kp N9        &kp N7    &trans
-                               &sl 5     &trans         &trans       &sk 4      &sl 3          &tog 4
+                               &sl 5     &trans         &trans       &sl 4      &sl 3          &tog 4
             >;
 
             label = "Nav, Num";
@@ -52,10 +52,10 @@
 
         numpad {
             bindings = <
-&trans  &kp TAB    &kp LG(N2)        &kp LG(N3)     &kp LG(N4)         &kp LG(N5)    &kp KP_MULTIPLY  &kp KP_N7   &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &trans
-&trans  &kp ESC    &kp LG(N6)        &kp LG(N7)     &kp LG(N8)         &kp LG(N9)    &kp KP_N0        &kp KP_N4   &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &trans
-&trans  &kp K_APP  &kp LG(LS(LEFT))  &kp LG(LS(S))  &kp LG(LS(RIGHT))  &kp LG(N0)    &kp KP_DIVIDE    &kp KP_N1   &kp KP_N2  &kp KP_N3  &kp KP_DOT    &trans
-                                     &kp BSPC       &tog 4             &kp SPACE     &kp ENTER        &kp KP_NUM  &tog 4
+&trans  &kp TAB    &kp LC(LG(N2))    &kp LC(LG(N3))  &kp LC(LG(N4))     &kp LC(LG(N5))    &kp KP_MULTIPLY  &kp KP_N7   &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &trans
+&trans  &kp ESC    &kp LC(LG(N6))    &kp LC(LG(N7))  &kp LC(LG(N8))     &kp LC(LG(N9))    &kp KP_N0        &kp KP_N4   &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &trans
+&trans  &kp K_APP  &kp LG(LS(LEFT))  &kp LG(LS(S))   &kp LG(LS(RIGHT))  &kp LC(LG(N0))    &kp KP_DIVIDE    &kp KP_N1   &kp KP_N2  &kp KP_N3  &kp KP_DOT    &trans
+                                     &kp BSPC        &tog 4             &kp SPACE         &kp ENTER        &kp KP_NUM  &tog 4
             >;
 
             label = "Numpad, WM";
