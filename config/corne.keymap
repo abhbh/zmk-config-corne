@@ -3,6 +3,16 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+
+    behaviors {
+        shift_cw: shift_capsword {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sk RSHIFT>, <&caps_word>; 
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -11,7 +21,7 @@
 &none  &kp Q  &kp W  &kp F      &kp P  &kp B        &kp J      &kp L  &kp U      &kp Y    &kp SQT   &none
 &none  &kp A  &kp R  &kp S      &kp T  &kp G        &kp M      &kp N  &kp E      &kp I    &kp O     &none
 &none  &kp Z  &kp X  &kp C      &kp D  &kp V        &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH  &none
-                     &sk LCTRL  &sl 1  &kp SPACE    &sk RSHFT  &sl 2  &sl 4
+                     &sk LCTRL  &sl 1  &kp SPACE    &shift_cw  &sl 2  &sl 4
             >;
 
             label = "Base Layer";
@@ -22,7 +32,7 @@
 &trans  &kp TAB  &kp LC(LEFT)  &kp UP    &kp LC(RIGHT)  &kp PG_UP    &kp DEL    &sk LC(LSHFT)  &kp ENTER  &kp LC(BSPC)  &kp BSPC  &trans
 &trans  &kp ESC  &kp LEFT      &kp DOWN  &kp RIGHT      &kp PG_DN    &kp LGUI   &sk LSHFT      &sk LCTRL  &sk LALT      &sk LGUI  &trans
 &trans  &kp N4   &kp N2        &kp N1    &kp N3         &kp N5       &kp N6     &kp N8         &kp N0     &kp N9        &kp N7    &trans
-                               &sl 5     &trans         &trans       &sl 4      &sl 3          &tog 4
+                               &sl 5     &trans         &trans       &sl 4      &sl 3          &key_repeat
             >;
 
             label = "Nav, Num";
@@ -33,7 +43,7 @@
 &trans  &kp TILDE  &kp COLON  &kp SQT   &kp LT    &kp PRCNT    &kp ASTRK  &kp GT    &kp SEMI  &kp EQUAL  &kp BSPC   &trans
 &trans  &kp GRAVE  &kp UNDER  &kp LPAR  &kp LBRC  &kp EXCL     &kp AMPS   &kp RBRC  &kp RPAR  &kp MINUS  &kp QMARK  &trans
 &trans  &kp BSLH   &kp AT     &kp HASH  &kp LBKT  &kp DLLR     &kp CARET  &kp RBKT  &kp PIPE  &kp PLUS   &kp ENTER  &trans
-                              &trans    &sl 3     &trans       &kp ENTER  &trans    &trans
+                              &trans    &sl 3     &trans       &kp ENTER  &trans    &tog 4
             >;
 
             label = "Symbols";
