@@ -21,12 +21,22 @@
 / {
 
     behaviors {
+
+        // Sticky shift with quick-release for the thumb shift_capsword
+        skq: sk_quick_release {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <2000>;
+            quick-release;
+            ignore-modifiers;
+        };
         
         // Tap for sticky shift, Hold for shift, double-tap for caps word
         shft_cw: shift_capsword {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&sk RSHFT>, <&caps_word>; 
+            bindings = <&skq RSHFT>, <&caps_word>;
             mods = <(MOD_RSFT)>;
         };
     };
