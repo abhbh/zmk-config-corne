@@ -105,12 +105,12 @@
         };
 
         legacy {
-            display-name = "Legacy layout";
+            display-name = "Legacy-like";
             bindings = <
-&trans  &kp TAB    &kp Q  &kp W      &kp E     &kp R        &none        &none      &none      &none  &kp CAPS   &trans
-&trans  &kp LSHFT  &kp A  &kp S      &kp D     &kp F        &none        &none      &none      &none  &none      &trans
-&trans  &kp LCTRL  &kp Z  &kp X      &kp C     &kp V        &key_repeat  &none      &kp ENTER  &none  &kp PSCRN  &trans
-                          &kp LCTRL  &kp LALT  &kp SPACE    &tog LGCY    &tog LGCY  &tog LGCY
+&trans  &kp TAB    &kp Q  &kp W      &kp E     &kp R        &kp J      &kp N1     &kp N2     &kp N3   &kp CAPS   &trans
+&trans  &kp LSHFT  &kp A  &kp S      &kp D     &kp F        &kp M      &kp N4     &kp N5     &kp I    &kp O      &trans
+&trans  &kp LCTRL  &kp Z  &kp X      &kp C     &kp V        &kp F5     &kp F8     &kp ENTER  &kp ESC  &kp PSCRN  &trans
+                          &kp RCTRL  &kp LALT  &kp SPACE    &tog LGCY  &tog LGCY  &tog LGCY
             >;
         };
 
