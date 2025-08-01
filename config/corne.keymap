@@ -58,7 +58,7 @@
             display-name = "Extend layer";
             bindings = <
 &trans  &kp HOME  &kp LC(LEFT)     &kp UP    &kp LC(RIGHT)  &kp PG_UP      &kp DEL      &kp BSPC       &kp LC(BSPC)  &sk MEH    &kp CAPS   &trans
-&trans  &kp END   &kp LEFT         &kp DOWN  &kp RIGHT      &kp PG_DN      &kp LGUI     &sk LSHFT      &sk LCTRL     &sk LALT   &sk LGUI   &trans
+&trans  &kp END   &kp LEFT         &kp DOWN  &kp RIGHT      &kp PG_DN      &kp LGUI     &sk LCTRL      &sk LALT      &sk LGUI   &sk LSHFT  &trans
 &trans  &kp ESC   &kp LC(LS(TAB))  &kp TAB   &kp LC(TAB)    &key_repeat    &key_repeat  &sk LC(LSHFT)  &kp ENTER     &kp K_APP  &kp PSCRN  &trans
                                    &sl KBFW  &trans         &kp BSPC       &sl NUM      &sl ADJ        &none
             >;
@@ -67,9 +67,9 @@
         symbols {
             display-name = "Symbols layer";
             bindings = <
-&trans  &kp LT    &kp TILDE  &kp EQUAL &kp GT    &kp PRCNT    &kp ASTRK  &kp AMPS   &kp HASH   &kp UNDER  &kp GRAVE  &trans
-&trans  &kp EXCL  &kp MINUS  &kp LPAR  &kp LBRC  &kp LBKT     &kp AT     &sk LSHFT  &sk LCTRL  &sk LALT   &sk LGUI   &trans
-&trans  &kp DLLR  &kp PLUS   &kp RPAR  &kp RBRC  &kp RBKT     &kp CARET  &kp PIPE   &kp SEMI   &kp COLON  &kp BSLH   &trans
+&trans  &kp GRAVE &kp EQUAL  &kp HASH  &kp EXCL  &kp PRCNT    &kp ASTRK  &kp AMPS   &kp UNDER  &kp COLON  &kp SEMI   &trans
+&trans  &kp TILDE &kp MINUS  &kp LPAR  &kp LBRC  &kp LBKT     &kp AT     &sk LCTRL  &sk LALT   &sk LGUI   &sk LSHFT  &trans
+&trans  &kp DLLR  &kp PLUS   &kp RPAR  &kp RBRC  &kp RBKT     &kp CARET  &kp PIPE   &kp LT     &kp GT     &kp BSLH   &trans
                              &trans    &sl ADJ   &kp ENTER    &kp ENTER  &trans     &tog WMNP
             >;
         };
@@ -78,7 +78,7 @@
             display-name = "Adjust+Fn layer";
             bindings = <
 &trans  &none       &kp C_MUTE  &kp C_VOL_DN      &kp C_VOL_UP  &sk HYPR    &kp F12  &kp F7   &kp F8   &kp F9  &kp INSERT       &trans
-&trans  &sk LGUI    &sk LALT    &sk LCTRL         &sk LSHFT     &sk MEH     &kp F11  &kp F4   &kp F5   &kp F6  &kp PAUSE_BREAK  &trans
+&trans  &sk LSHFT   &sk LGUI    &sk LALT          &sk LCTRL     &sk MEH     &kp F11  &kp F4   &kp F5   &kp F6  &kp PAUSE_BREAK  &trans
 &trans  &kp C_STOP  &kp C_PREV  &kp C_PLAY_PAUSE  &kp C_NEXT    &tog LGCY   &kp F10  &kp F1   &kp F2   &kp F3  &kp SCROLLLOCK   &trans
                                 &none             &trans        &none       &none    &trans   &none
             >;
@@ -88,7 +88,7 @@
             display-name = "Numbers layer";
             bindings = <
 &trans  &kp N1    &kp N2    &kp N3     &kp N4     &kp N5         &kp N6       &kp N7  &kp N8  &kp N9  &kp N0     &trans
-&trans  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &kp RALT       &kp N0       &kp N4  &kp N5  &kp N6  &kp COMMA  &trans
+&trans  &sk LSHFT &sk LGUI  &sk LALT   &sk LCTRL  &kp RALT       &kp N0       &kp N4  &kp N5  &kp N6  &kp COMMA  &trans
 &trans  &kp ESC   &kp DEL   &kp TAB    &kp ENTER  &key_repeat    &key_repeat  &kp N1  &kp N2  &kp N3  &kp DOT    &trans
                             &kp BSPC   &trans     &kp SPACE      &trans       &kp N0  &none
             >;
@@ -97,10 +97,10 @@
         wmnumpad {
             display-name = "WM+Numpad";
             bindings = <
-&trans  &kp LA(TAB)  &kp LC(LG(N2))    &kp LC(LG(N3))  &kp LC(LG(N4))     &kp LC(LG(N5))    &kp KP_MULTIPLY  &kp KP_N7   &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &trans
-&trans  &kp LA(ESC)  &kp LC(LG(N6))    &kp LC(LG(N7))  &kp LC(LG(N8))     &kp LC(LG(N9))    &kp KP_N0        &kp KP_N4   &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &trans
-&trans  &kp ESC      &kp LG(LS(LEFT))  &kp TAB         &kp LG(LS(RIGHT))  &kp LC(LG(N0))    &kp KP_DIVIDE    &kp KP_N1   &kp KP_N2  &kp KP_N3  &kp KP_DOT    &trans
-                                       &kp BSPC        &tog WMNP          &kp SPACE         &kp KP_ENTER     &kp KP_NUM  &tog WMNP
+&trans  &kp LC(LG(N1)) &kp LC(LG(N2))   &kp LC(LG(N3))  &kp LC(LG(N4))    &kp LC(LG(N5))    &kp KP_MINUS     &kp KP_N7   &kp KP_N8  &kp KP_N9  &kp KP_N0    &trans
+&trans  &kp LC(LG(N6)) &kp LC(LG(N7))   &kp LC(LG(N8))  &kp LC(LG(N9))    &kp LC(LG(N0))    &kp KP_MULTIPLY  &kp KP_N4   &kp KP_N5  &kp KP_N6  &kp KP_PLUS  &trans
+&trans  &kp ESC        &kp LG(LS(LEFT)) &kp TAB         &kp LG(LS(RIGHT)) &kp LA(ESC)       &kp KP_DIVIDE    &kp KP_N1   &kp KP_N2  &kp KP_N3  &kp KP_DOT   &trans
+                                        &kp BSPC        &tog WMNP         &kp SPACE         &kp KP_ENTER     &kp KP_NUM  &tog WMNP
             >;
         };
 
