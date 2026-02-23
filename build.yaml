@@ -25,11 +25,9 @@ include:
   - board: nice_nano@2.0.0//zmk
     shield: corne_left
     artifact-name: corne36_left
-    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
   - board: nice_nano@2.0.0//zmk
     shield: corne_right
     artifact-name: corne36_right
-    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
   - board: xiao_ble//zmk
     shield: settings_reset
     artifact-name: corne36_dongle_reset
